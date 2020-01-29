@@ -87,8 +87,14 @@ namespace writing_goals.Controllers
                 sprintGoalsViewModel.goalThree.SprintId = sprintGoalsViewModel.sprint.Id;
                 sprintGoalsViewModel.goalFour.SprintId = sprintGoalsViewModel.sprint.Id;
                 sprintGoalsViewModel.goalFive.SprintId = sprintGoalsViewModel.sprint.Id;
-                _context.AddRange(sprintGoalsViewModel.goalOne, sprintGoalsViewModel.goalTwo,
-                    sprintGoalsViewModel.goalThree, sprintGoalsViewModel.goalFour, sprintGoalsViewModel.goalFive);
+
+                _context.AddRange(
+                    sprintGoalsViewModel.goalOne,
+                    sprintGoalsViewModel.goalTwo,
+                    sprintGoalsViewModel.goalThree,
+                    sprintGoalsViewModel.goalFour,
+                    sprintGoalsViewModel.goalFive
+                    );
 
 
 

@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using writing_goals.Models;
+using writing_goals.Models.ViewModels;
 
 namespace writing_goals
 {
@@ -63,7 +64,7 @@ namespace writing_goals
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Sprints}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

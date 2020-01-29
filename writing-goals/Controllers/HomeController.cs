@@ -33,11 +33,14 @@ namespace writing_goals.Controllers
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         [Authorize]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(SprintGoalsViewModel sprintGoalsViewModel)
         {
             var user = await GetCurrentUserAsync();
-            return View(await _context.Sprints
-                .Where(s => s.ApplicationUser.Id == user.Id && s.Archived == false).ToListAsync());
+
+            _context.Add(sprintGoalsViewModel.sprint);
+            await _context.SaveChangesAsync();
+
+            return View(sprintGoalsViewModel);
         }
 
 
