@@ -1,0 +1,98 @@
+﻿@model writing_goals.Models.ViewModels.SprintGoalsViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Create your sprint!</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <h5>Set the length of your sprint</h5>
+            <div class="form-group">
+                <label asp-for="sprint.StartDate" type="date" class="control-label">Sprint Start Date</label>
+                <input asp-for="sprint.StartDate" type="date" class="form-control" />
+                <span asp-validation-for="sprint.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sprint.EndDate" type="date" class="control-label">Sprint End Date</label>
+                <input asp-for="sprint.EndDate" type="date" class="form-control" />
+                <span asp-validation-for="sprint.EndDate" class="text-danger"></span>
+            </div>
+
+            <h5>Goal #1</h5>
+            <div class="form-group">
+                <label asp-for="goalOne.TimeGoal" class="control-label">Desired writing time</label>
+                <input asp-for="goalOne.TimeGoal" class="form-control" />
+                <span asp-validation-for="goalOne.TimeGoal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="goalOne.WordCountGoal" class="control-label">Desired word count</label>
+                <input asp-for="goalOne.WordCountGoal" class="form-control" />
+                <span asp-validation-for="goalOne.WordCountGoal" class="text-danger"></span>
+            </div>
+
+            <h5>Goal #2</h5>
+            <div class="form-group">
+                <label asp-for="goalTwo.TimeGoal" class="control-label">Desired writing time</label>
+                <input asp-for="goalTwo.TimeGoal" class="form-control" />
+                <span asp-validation-for="goalTwo.TimeGoal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="goalTwo.WordCountGoal" class="control-label">Desired word count</label>
+                <input asp-for="goalTwo.WordCountGoal" class="form-control" />
+                <span asp-validation-for="goalTwo.WordCountGoal" class="text-danger"></span>
+            </div>
+
+            <h5>Goal #3</h5>
+            <div class="form-group">
+                <label asp-for="goalThree.TimeGoal" class="control-label">Desired writing time</label>
+                <input asp-for="goalThree.TimeGoal" class="form-control" />
+                <span asp-validation-for="goalThree.TimeGoal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="goalThree.WordCountGoal" class="control-label">Desired word count</label>
+                <input asp-for="goalThree.WordCountGoal" class="form-control" />
+                <span asp-validation-for="goalThree.WordCountGoal" class="text-danger"></span>
+            </div>
+
+            <h5>Goal #4</h5>
+            <div class="form-group">
+                <label asp-for="goalFour.TimeGoal" class="control-label">Desired writing time</label>
+                <input asp-for="goalFour.TimeGoal" class="form-control" />
+                <span asp-validation-for="goalFour.TimeGoal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="goalFour.WordCountGoal" class="control-label">Desired word count</label>
+                <input asp-for="goalFour.WordCountGoal" class="form-control" />
+                <span asp-validation-for="goalFour.WordCountGoal" class="text-danger"></span>
+            </div>
+
+            <h5>Goal #5</h5>
+            <div class="form-group">
+                <label asp-for="goalFive.TimeGoal" class="control-label">Desired writing time</label>
+                <input asp-for="goalFive.TimeGoal" class="form-control" />
+                <span asp-validation-for="goalFive.TimeGoal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="goalFive.WordCountGoal" class="control-label">Desired word count</label>
+                <input asp-for="goalFive.WordCountGoal" class="form-control" />
+                <span asp-validation-for="goalFive.WordCountGoal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

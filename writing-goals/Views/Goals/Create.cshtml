@@ -1,0 +1,63 @@
+﻿@model writing_goals.Models.Goal
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Goal</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SprintId" class="control-label"></label>
+                <input asp-for="SprintId" class="form-control" />
+                <span asp-validation-for="SprintId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GoalDate" class="control-label"></label>
+                <input asp-for="GoalDate" class="form-control" />
+                <span asp-validation-for="GoalDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TimeGoal" class="control-label"></label>
+                <input asp-for="TimeGoal" class="form-control" />
+                <span asp-validation-for="TimeGoal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TimeActual" class="control-label"></label>
+                <input asp-for="TimeActual" class="form-control" />
+                <span asp-validation-for="TimeActual" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WordCountGoal" class="control-label"></label>
+                <input asp-for="WordCountGoal" class="form-control" />
+                <span asp-validation-for="WordCountGoal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WordCountActual" class="control-label"></label>
+                <input asp-for="WordCountActual" class="form-control" />
+                <span asp-validation-for="WordCountActual" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OptionalGoal" class="control-label"></label>
+                <input asp-for="OptionalGoal" class="form-control" />
+                <span asp-validation-for="OptionalGoal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
