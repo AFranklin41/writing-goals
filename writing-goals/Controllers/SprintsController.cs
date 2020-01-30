@@ -35,8 +35,13 @@ namespace writing_goals.Controllers
         {
             var user = await GetCurrentUserAsync();
             return View(await _context.Sprints
-                .Where(s => s.ApplicationUser.Id == user.Id && s.Archived == false).ToListAsync());
+                .Where(s => s.ApplicationUser.Id == user.Id && s.Archived == false).ToListAsync()
+                );
         }
+        //public async Task<IActionResult> Index(SprintGoalsViewModel sprintGoalsViewModel)
+        //{
+        //    return View(sprintGoalsViewModel);
+        //}
 
         // GET: Sprints/Details/5
         public async Task<IActionResult> Details(int? id)

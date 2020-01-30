@@ -46,6 +46,11 @@
                 <input asp-for="goalTwo.WordCountGoal" class="form-control" />
                 <span asp-validation-for="goalTwo.WordCountGoal" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="goalTwo.GoalDate" type="date" class="control-label">Goal Date</label>
+                <input asp-for="goalTwo.GoalDate" type="date" class="form-control" />
+                <span asp-validation-for="goalTwo.GoalDate" class="text-danger"></span>
+            </div>
 
             <h5>Goal #3</h5>
             <div class="form-group">
