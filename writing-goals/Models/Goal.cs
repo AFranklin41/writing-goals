@@ -11,7 +11,26 @@ namespace writing_goals.Models
         public Sprint sprint { get; set; }
         public int SprintId { get; set; }
         public DateTime GoalDate { get; set; }
-        public int TimeGoal { get; set; }
+        public string DateOnly
+        {
+            get
+            {
+                return GoalDate.ToShortDateString();
+            }
+            set { }
+        }
+
+        public string TimeOnly
+        {
+            get
+            {
+                return GoalDate.ToShortTimeString();
+            }
+            set { }
+        }
+
+        //TODO, update from int to something timey
+        public double TimeGoal { get; set; }
         public int TimeActual { get; set; }
         public int WordCountGoal { get; set; }
         public int WordCountActual { get; set; }

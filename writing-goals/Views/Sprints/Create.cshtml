@@ -6,9 +6,9 @@
 
 <h4>Create your sprint!</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+<form asp-action="Create">
+    <div class="row">
+        <div class="col-md-4">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <h5>Set the length of your sprint</h5>
@@ -25,74 +25,96 @@
 
             <h5>Goal #1</h5>
             <div class="form-group">
-                <label asp-for="goalOne.TimeGoal" class="control-label">Desired writing time</label>
-                <input asp-for="goalOne.TimeGoal" class="form-control" />
+                @*<label asp-for="goalOne.TimeGoal" class="control-label" ></label>*@
+                <input asp-for="goalOne.TimeGoal" class="form-control" placeholder="Desired Writing Time"/>
                 <span asp-validation-for="goalOne.TimeGoal" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="goalOne.WordCountGoal" class="control-label">Desired word count</label>
-                <input asp-for="goalOne.WordCountGoal" class="form-control" />
+                @*<label asp-for="goalOne.WordCountGoal" class="control-label"></label>*@
+                <input asp-for="goalOne.WordCountGoal" class="form-control" placeholder="Desired Word Count"/>
                 <span asp-validation-for="goalOne.WordCountGoal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="goalOne.GoalDate" type="datetime-local" class="control-label">Goal Date</label>
+                <input asp-for="goalOne.GoalDate" type="datetime-local" class="form-control" placeholder="Goal Date"/>
+                <span asp-validation-for="goalOne.GoalDate" class="text-danger"></span>
             </div>
 
             <h5>Goal #2</h5>
             <div class="form-group">
-                <label asp-for="goalTwo.TimeGoal" class="control-label">Desired writing time</label>
-                <input asp-for="goalTwo.TimeGoal" class="form-control" />
+                @*<label asp-for="goalTwo.TimeGoal" class="control-label"></label>*@
+                <input asp-for="goalTwo.TimeGoal" class="form-control" placeholder="Desired Writing Time"/>
                 <span asp-validation-for="goalTwo.TimeGoal" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="goalTwo.WordCountGoal" class="control-label">Desired word count</label>
-                <input asp-for="goalTwo.WordCountGoal" class="form-control" />
+                @*<label asp-for="goalTwo.WordCountGoal" class="control-label"></label>*@
+                <input asp-for="goalTwo.WordCountGoal" class="form-control" placeholder="Desired Word Count"/>
                 <span asp-validation-for="goalTwo.WordCountGoal" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="goalTwo.GoalDate" type="date" class="control-label">Goal Date</label>
-                <input asp-for="goalTwo.GoalDate" type="date" class="form-control" />
+                <label asp-for="goalTwo.GoalDate" type="datetime-local" class="control-label">Goal Date</label>
+                <input asp-for="goalTwo.GoalDate" type="datetime-local" class="form-control" />
                 <span asp-validation-for="goalTwo.GoalDate" class="text-danger"></span>
             </div>
 
             <h5>Goal #3</h5>
             <div class="form-group">
-                <label asp-for="goalThree.TimeGoal" class="control-label">Desired writing time</label>
-                <input asp-for="goalThree.TimeGoal" class="form-control" />
+                @*<label asp-for="goalThree.TimeGoal" class="control-label"></label>*@
+                <input asp-for="goalThree.TimeGoal" class="form-control" placeholder="Desired Writing Time"/>
                 <span asp-validation-for="goalThree.TimeGoal" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="goalThree.WordCountGoal" class="control-label">Desired word count</label>
-                <input asp-for="goalThree.WordCountGoal" class="form-control" />
+                @*<label asp-for="goalThree.WordCountGoal" class="control-label"></label>*@
+                <input asp-for="goalThree.WordCountGoal" class="form-control" placeholder="Desired Word Count"/>
                 <span asp-validation-for="goalThree.WordCountGoal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="goalThree.GoalDate" type="datetime-local" class="control-label">Goal Date</label>
+                <input asp-for="goalThree.GoalDate" type="datetime-local" class="form-control" />
+                <span asp-validation-for="goalThree.GoalDate" class="text-danger"></span>
             </div>
 
             <h5>Goal #4</h5>
             <div class="form-group">
-                <label asp-for="goalFour.TimeGoal" class="control-label">Desired writing time</label>
-                <input asp-for="goalFour.TimeGoal" class="form-control" />
+                @*<label asp-for="goalFour.TimeGoal" class="control-label"></label>*@
+                <input asp-for="goalFour.TimeGoal" class="form-control" placeholder="Desired Writing Time"/>
                 <span asp-validation-for="goalFour.TimeGoal" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="goalFour.WordCountGoal" class="control-label">Desired word count</label>
-                <input asp-for="goalFour.WordCountGoal" class="form-control" />
+                @*<label asp-for="goalFour.WordCountGoal" class="control-label"></label>*@
+                <input asp-for="goalFour.WordCountGoal" class="form-control" placeholder="Desired Word Count"/>
                 <span asp-validation-for="goalFour.WordCountGoal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="goalFour.GoalDate" type="datetime-local" class="control-label">Goal Date</label>
+                <input asp-for="goalFour.GoalDate" type="datetime-local" class="form-control" />
+                <span asp-validation-for="goalFour.GoalDate" class="text-danger"></span>
             </div>
 
             <h5>Goal #5</h5>
             <div class="form-group">
-                <label asp-for="goalFive.TimeGoal" class="control-label">Desired writing time</label>
-                <input asp-for="goalFive.TimeGoal" class="form-control" />
+                @*<label asp-for="goalFive.TimeGoal" class="control-label"></label>*@
+                <input asp-for="goalFive.TimeGoal" class="form-control" placeholder="Desired Writing Time"/>
                 <span asp-validation-for="goalFive.TimeGoal" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="goalFive.WordCountGoal" class="control-label">Desired word count</label>
-                <input asp-for="goalFive.WordCountGoal" class="form-control" />
+                @*<label asp-for="goalFive.WordCountGoal" class="control-label"></label>*@
+                <input asp-for="goalFive.WordCountGoal" class="form-control" placeholder="Desired Word Count"/>
                 <span asp-validation-for="goalFive.WordCountGoal" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="goalFive.GoalDate" type="datetime-local" class="control-label">Goal Date</label>
+                <input asp-for="goalFive.GoalDate" type="datetime-local" class="form-control" />
+                <span asp-validation-for="goalFive.GoalDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
-        </form>
+
+        </div>
     </div>
-</div>
+</form>
 
 <div>
     <a asp-action="Index">Back to List</a>

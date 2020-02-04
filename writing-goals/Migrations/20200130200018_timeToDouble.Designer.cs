@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using writing_goals.Data;
 
 namespace writing_goals.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200130200018_timeToDouble")]
+    partial class timeToDouble
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -234,9 +236,6 @@ namespace writing_goals.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("DateOnly")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("GoalDate")
                         .HasColumnType("datetime2");
 
@@ -251,9 +250,6 @@ namespace writing_goals.Migrations
 
                     b.Property<double>("TimeGoal")
                         .HasColumnType("float");
-
-                    b.Property<string>("TimeOnly")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("WordCountActual")
                         .HasColumnType("int");
@@ -281,10 +277,10 @@ namespace writing_goals.Migrations
                     b.Property<bool>("Archived")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("StartDate")
+                    b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
