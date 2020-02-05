@@ -1,0 +1,36 @@
+﻿@model IEnumerable<writing_goals.Models.Sprint>
+
+@{
+    ViewData["Title"] = "History";
+}
+
+<h1>History</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-center">
+                @Html.DisplayName("Sprint Start Date")
+            </th>
+            <th class="text-center">
+                @Html.DisplayName("Sprint End Date")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td class="text-center">
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

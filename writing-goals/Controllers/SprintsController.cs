@@ -37,6 +37,18 @@ namespace writing_goals.Controllers
             return View(await _context.Sprints
                 .Where(s => s.ApplicationUser.Id == user.Id && s.Archived == false)
                 .Include(s => s.sprintGoals)
+                .FirstOrDefaultAsync()
+                );
+        }
+
+        // GET: Sprints History
+        [Authorize]
+        public async Task<IActionResult> History()
+        {
+            var user = await GetCurrentUserAsync();
+            return View(await _context.Sprints
+                .Where(s => s.ApplicationUser.Id == user.Id && s.Archived == true)
+                .Include(s => s.sprintGoals)
                 .ToListAsync()
                 );
         }
@@ -49,7 +61,11 @@ namespace writing_goals.Controllers
                 return NotFound();
             }
 
+            var user = await GetCurrentUserAsync();
+
             var sprint = await _context.Sprints
+                .Where(s => s.ApplicationUser.Id == user.Id && s.Archived == true)
+                .Include(s => s.sprintGoals)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (sprint == null)
             {
@@ -140,6 +156,48 @@ namespace writing_goals.Controllers
             {
                 try
                 {
+                    _context.Update(sprint);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!SprintExists(sprint.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(sprint);
+        }
+
+        // POST: Sprints/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Complete(int id, [Bind("Id,StartDate,EndDate,Archived")] Sprint sprint)
+        {
+            if (id != sprint.Id)
+            {
+                return NotFound();
+            }
+            
+            if (ModelState.IsValid)
+            {
+                try
+                {
+
+                    //get logged in user
+                    var user = await GetCurrentUserAsync();
+
+                    sprint = await _context.Sprints.FirstOrDefaultAsync(s => s.Id == id && s.Archived == false);
+                    sprint.Archived = true;
+
                     _context.Update(sprint);
                     await _context.SaveChangesAsync();
                 }

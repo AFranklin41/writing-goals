@@ -6,30 +6,44 @@
 
 <h1>Details</h1>
 
-<div>
-    <h4>Sprint</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StartDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StartDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EndDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EndDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Archived)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Archived)
-        </dd>
-    </dl>
-</div>
+<table id="sweet-table" class="table table-bordered table-responsive-md table-striped text-center">
+    <thead>
+        <tr>
+            <th scope="col" class="text-center">Goal #</th>
+            <th scope="col" class="text-center">@Html.DisplayName("Day")</th>
+            <th scope="col" class="text-center">@Html.DisplayName("Time")</th>
+            <th scope="col" class="text-center">@Html.DisplayName("Date")</th>
+            <th scope="col" class="text-center">@Html.DisplayName("Time Spent")</th>
+            <th scope="col" class="text-center">@Html.DisplayName("Time Target")</th>
+            <th scope="col" class="text-center">@Html.DisplayName("Word Count")</th>
+            <th scope="col" class="text-center">@Html.DisplayName("Word Target")</th>
+            <th scope="col" class="text-center">@Html.DisplayName("Note")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ var counter = 0;
+            @foreach (var sprintGoal in Model.sprintGoals)
+            {
+                counter += 1;
+                <tr>
+                    <td class="text-center">
+                        @counter
+                        @*<br />
+                            <a asp-action="Edit" asp-route-id="@item.Id">Update</a>*@
+                    </td>
+                    <td id="day-of-week-@sprintGoal.Id" class="text-center">@Html.DisplayFor(modelItem => sprintGoal.GoalDate.DayOfWeek)</td>
+                    <td id="time-only-@sprintGoal.Id" class="text-center">@Html.DisplayFor(modelItem => sprintGoal.TimeOnly)</td>
+                    <td id="date-only-@sprintGoal.Id" class="text-center">@Html.DisplayFor(modelItem => sprintGoal.DateOnly)</td>
+                    <td id="actual-time-@sprintGoal.Id" class="text-center editable">@Html.DisplayFor(modelItem => sprintGoal.TimeActual)</td>
+                    <td id="goal-time-@sprintGoal.Id" class="text-center">@Html.DisplayFor(modelItem => sprintGoal.TimeGoal)</td>
+                    <td id="actual-count-@sprintGoal.Id" class="text-center editable">@Html.DisplayFor(modelItem => sprintGoal.WordCountActual)</td>
+                    <td id="goal-count-@sprintGoal.Id" class="text-center">@Html.DisplayFor(modelItem => sprintGoal.WordCountGoal)</td>
+                    <td id="optional-goal-@sprintGoal.Id" class="text-center editable">@Html.DisplayFor(modelItem => sprintGoal.OptionalGoal)</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
