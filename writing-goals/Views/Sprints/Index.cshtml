@@ -7,42 +7,54 @@
 
 @if (Model == null)
 {
-    <div class="text-center">
-        <h1 class="display-4">Welcome!</h1>
-        <input type="button"
-               value="Create New Sprint"
-               onclick="location.href='@Url.Action("Create", "Sprints")'" />
+    @*<div class="text-center">
+            <h1 class="display-4">Welcome!</h1>
+            <input type="button"
+                   class="btn btn-light"
+                   value="Create New Sprint"
+                   onclick="location.href='@Url.Action("Create", "Sprints")'" />
+        </div>*@
+    <div class="jumbotron text-center">
+        <h1 class="display-3">Welcome</h1>
+        <p class="lead">Writing Goals is a simple app to help you set goals for your next writing project.</p>
+        <hr class="my-4">
+        <p>Click below to get started on your first sprint</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" asp-controller="Sprints" asp-action="Create" role="button">Create</a>
+        </p>
     </div>
+    @*<button type="button" class="btn btn-primary" asp-controller="Sprints" asp-action="Create">Create New Sprint</button>*@
+
 }
 
-<br />
-<table class="table">
-    <thead>
-        <tr>
-            <th class="text-center">
-                @Html.DisplayName("Sprint Start Date")
-            </th>
-            <th class="text-center">
-                @Html.DisplayName("Sprint End Date")
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => Model.StartDate)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => Model.EndDate)
-                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-            </td>
-        </tr>
-    </tbody>
-</table>
 @if (Model != null)
 {
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-center">
+                    @Html.DisplayName("Sprint Start Date")
+                </th>
+                <th class="text-center">
+                    @Html.DisplayName("Sprint End Date")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => Model.StartDate)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => Model.EndDate)
+                    @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table id="sweet-table" class="table table-bordered table-responsive-md table-striped text-center">
         <thead>
             <tr>
@@ -82,7 +94,7 @@
         </tbody>
     </table>
     <form asp-action="Complete" asp-route-id="@Model.Id">
-        <button>
+        <button class="btn btn-primary">
             Complete Sprint
         </button>
     </form>
