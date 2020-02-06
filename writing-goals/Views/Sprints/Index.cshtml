@@ -83,9 +83,25 @@
                         <td id="day-of-week-@sprintGoal.Id" class="text-center">@Html.DisplayFor(modelItem => sprintGoal.GoalDate.DayOfWeek)</td>
                         <td id="time-only-@sprintGoal.Id" class="text-center">@Html.DisplayFor(modelItem => sprintGoal.TimeOnly)</td>
                         <td id="date-only-@sprintGoal.Id" class="text-center">@Html.DisplayFor(modelItem => sprintGoal.DateOnly)</td>
-                        <td id="actual-time-@sprintGoal.Id" class="text-center editable">@Html.DisplayFor(modelItem => sprintGoal.TimeActual)</td>
+
+                        @if (sprintGoal.TimeActual >= sprintGoal.TimeGoal)
+                        {
+                            <td id="actual-time-@sprintGoal.Id" class="text-center editable bg-success">@Html.DisplayFor(modelItem => sprintGoal.TimeActual)</td>
+                        }
+                        else
+                        {
+                            <td id="actual-time-@sprintGoal.Id" class="text-center editable">@Html.DisplayFor(modelItem => sprintGoal.TimeActual)</td>
+                        }
                         <td id="goal-time-@sprintGoal.Id" class="text-center">@Html.DisplayFor(modelItem => sprintGoal.TimeGoal)</td>
-                        <td id="actual-count-@sprintGoal.Id" class="text-center editable">@Html.DisplayFor(modelItem => sprintGoal.WordCountActual)</td>
+
+                        @if (sprintGoal.WordCountActual >= sprintGoal.WordCountGoal)
+                        {
+                            <td id="actual-count-@sprintGoal.Id" class="text-center editable bg-success">@Html.DisplayFor(modelItem => sprintGoal.WordCountActual)</td>
+                        }
+                        else
+                        {
+                            <td id="actual-count-@sprintGoal.Id" class="text-center editable">@Html.DisplayFor(modelItem => sprintGoal.WordCountActual)</td>
+                        }
                         <td id="goal-count-@sprintGoal.Id" class="text-center">@Html.DisplayFor(modelItem => sprintGoal.WordCountGoal)</td>
                         <td id="optional-goal-@sprintGoal.Id" class="text-center editable">@Html.DisplayFor(modelItem => sprintGoal.OptionalGoal)</td>
                     </tr>
