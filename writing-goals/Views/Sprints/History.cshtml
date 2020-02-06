@@ -4,7 +4,7 @@
     ViewData["Title"] = "History";
 }
 
-<h2 class="text-center">Past Sprints</h2>
+<h2 class="text-center"></h2>
 
 <table class="table">
     <thead>
@@ -15,22 +15,65 @@
             <th class="text-center">
                 @Html.DisplayName("Sprint End Date")
             </th>
+            <th class="text-center">
+                @Html.DisplayName("Time Goals Met")
+            </th>
+            <th class="text-center">
+                @Html.DisplayName("Word Count Goals Met")
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td class="text-center">
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+
+        @foreach (var item in Model)
+        {
+            var timeCounter = 0;
+            var wordCounter = 0;
+            <tr>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td class="text-center">
+                    @foreach (var goal in item.sprintGoals)
+                    {
+                        if (goal.TimeActual >= goal.TimeGoal)
+                        {
+                            timeCounter = timeCounter + 1;
+                        }
+                    }
+                    <p>
+                        @timeCounter / 5
+                        <br />
+                        goals complete
+                        <br />
+                        @((timeCounter / 5.0) * 100)% completion
+                    </p>
+
+                </td>
+                <td class="text-center">
+                    @foreach (var goal in item.sprintGoals)
+                    {
+                        if (goal.WordCountActual >= goal.WordCountGoal)
+                        {
+                            wordCounter = wordCounter + 1;
+                        }
+                    }
+                    <p>
+                        @wordCounter / 5
+                        <br />
+                        goals complete
+                        <br />
+                        @((wordCounter / 5.0) * 100)% completion
+                    </p>
+                </td>
+                <td class="text-center">
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

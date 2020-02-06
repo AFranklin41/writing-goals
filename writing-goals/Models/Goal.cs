@@ -31,9 +31,9 @@ namespace writing_goals.Models
 
         //TODO, update from int to something timey
         public double TimeGoal { get; set; }
-        public int TimeActual { get; set; }
-        public int WordCountGoal { get; set; }
-        public int WordCountActual { get; set; }
+        public double TimeActual { get; set; }
+        public double WordCountGoal { get; set; }
+        public double WordCountActual { get; set; }
         public string OptionalGoal { get; set; }
     }
 }

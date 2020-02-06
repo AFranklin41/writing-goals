@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using writing_goals.Data;
 
 namespace writing_goals.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200206153433_goalTimeIntToDouble")]
+    partial class goalTimeIntToDouble
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -258,8 +260,8 @@ namespace writing_goals.Migrations
                     b.Property<double>("WordCountActual")
                         .HasColumnType("float");
 
-                    b.Property<double>("WordCountGoal")
-                        .HasColumnType("float");
+                    b.Property<int>("WordCountGoal")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

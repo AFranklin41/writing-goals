@@ -15,15 +15,20 @@
             <th scope="col" class="text-center">@Html.DisplayName("Date")</th>
             <th scope="col" class="text-center">@Html.DisplayName("Time Spent")</th>
             <th scope="col" class="text-center">@Html.DisplayName("Time Target")</th>
+            <th scope="col" class="text-center">@Html.DisplayName("Time Completion")</th>
             <th scope="col" class="text-center">@Html.DisplayName("Word Count")</th>
             <th scope="col" class="text-center">@Html.DisplayName("Word Target")</th>
+            <th scope="col" class="text-center">@Html.DisplayName("Word Completion")</th>
             <th scope="col" class="text-center">@Html.DisplayName("Note")</th>
         </tr>
     </thead>
     <tbody>
         @{ var counter = 0;
+
             @foreach (var sprintGoal in Model.sprintGoals)
             {
+                var timeCounter = 0;
+                var wordCounter = 0;
                 counter += 1;
                 <tr>
                     <td class="text-center">
@@ -36,8 +41,30 @@
                     <td id="date-only-@sprintGoal.Id" class="text-center">@Html.DisplayFor(modelItem => sprintGoal.DateOnly)</td>
                     <td id="actual-time-@sprintGoal.Id" class="text-center editable">@Html.DisplayFor(modelItem => sprintGoal.TimeActual)</td>
                     <td id="goal-time-@sprintGoal.Id" class="text-center">@Html.DisplayFor(modelItem => sprintGoal.TimeGoal)</td>
+                    <td class="text-center">
+                        @{
+                            {
+                                <p>
+                                    @((sprintGoal.TimeActual / sprintGoal.TimeGoal) * 100)%
+                                <br />
+                                of goal met
+                            </p>
+                        }
+                        }
+                    </td>
                     <td id="actual-count-@sprintGoal.Id" class="text-center editable">@Html.DisplayFor(modelItem => sprintGoal.WordCountActual)</td>
                     <td id="goal-count-@sprintGoal.Id" class="text-center">@Html.DisplayFor(modelItem => sprintGoal.WordCountGoal)</td>
+                    <td class="text-center">
+                        @{
+                            {
+                                <p>
+                                    @((sprintGoal.WordCountActual / sprintGoal.WordCountGoal) * 100)%
+                                <br />
+                                of goal met
+                            </p>
+                        }
+                        }
+                    </td>
                     <td id="optional-goal-@sprintGoal.Id" class="text-center editable">@Html.DisplayFor(modelItem => sprintGoal.OptionalGoal)</td>
                 </tr>
             }
